@@ -7,7 +7,7 @@ const experience = [
     role: "Internship",
     company: "TruFyre",
     period: "2025 December - 2026 February",
-    desc: "Assisted in development processes as well as cloud infrastructure"
+    desc: "Assisted in development processes and assisted in technological advancements as well as cloud infrastructure"
   },
   {
     role: "Internship",

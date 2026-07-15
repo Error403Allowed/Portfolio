@@ -1,160 +1,251 @@
-# Shrravan Bala · Portfolio
+# Analogix
 
-[![Vite](https://img.shields.io/badge/Vite-7.x-646CFF?logo=vite)](https://vitejs.dev)
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
-[![shadcn/ui](https://img.shields.io/badge/shadcn/ui-slate-000000)](https://ui.shadcn.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.x-0055FF?logo=framer)](https://www.framer.com/motion/)
-[![Groq](https://img.shields.io/badge/Groq-LLM-F55036?logo=groq)](https://groq.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?logo=vercel)](https://vercel.com)
+> Do you really need to have a lot of tabs open when you can have everything in one place with Analogix? You will not have to switch between tools like claude, quizlet and anki anymore.
 
-An interactive personal portfolio built with React, featuring a dynamic particle background, an AI-powered assistant, dark/light mode, and full offline support.
+![Platform](https://img.shields.io/badge/platform-web%20%7C%20mobile%20%7C%20api-6366f1)
+
+![Node](https://img.shields.io/badge/node-%3E%3D22%20%3C27-339933)
+
+![npm](https://img.shields.io/badge/npm-%3E%3D11-CC3534)
+
+---
+
+## Table of Contents
+
+- [Screenshots](#screenshots)
+
+- [The story behind Analogix](#the-story-behind-analogix)
+
+- [Architecture](#architecture)
+
+- [The apps](#the-apps)
+
+- [Getting started](#getting-started)
+
+- [Environment variables](#environment-variables)
+
+- [Root-level scripts](#root-level-scripts)
+
+- [Further reading](#further-reading)
+
+---
+
+## Screenshots
+
+| Mobile Dashboard | Chat | Web Dashboard |
+
+|:---:|:---:|:---:|
+
+| ![Mobile Dashboard](screenshots/mobile-dashboard.png) | ![Chat](screenshots/mobile-chat.png) | ![Web Dashboard](screenshots/web-dashboard.png)
+
+| Study Hub | Calendar | Timer |
+
+![Study Hub](screenshots/mobile-studyhub.png) | ![Calendar](screenshots/mobile-calendar.png) | ![Timer](screenshots/mobile-timer.png) |
+
+| Quiz | | |
+
+| ![Quiz](screenshots/mobile-quiz.png) | |
 
 ---
 
 ## Features
 
-- **Splash Screen** — Animated entry gate that greets visitors once per session
-- **Particle Background** — Canvas-based particle system with mouse repulsion and connecting lines
-- **Cursor Glow** — Smooth radial glow that follows the cursor
-- **Dark / Light Mode** — Persisted toggle that respects `prefers-color-scheme`
-- **Dynamic Accent Color** — Pick from 6 accent hues (blue, red, green, orange, purple, pink) — recolours the entire UI via CSS variables
-- **Glassmorphism UI** — Frosted glass panels, glow borders, and subtle grid background
-- **Scroll Animations** — Every section fades and slides in as you scroll (Framer Motion)
-- **3D Tilt Portrait** — Hero image rotates with spring physics based on mouse position
-- **AI Chat Assistant** — Floating widget powered by Groq LLM, preloaded with portfolio context; supports round-robin API key rotation
-- **Contact Form** — Validated form (react-hook-form + zod) sent via Formspree
-- **Animated Skill Bars** — Gradient-filled progress bars that animate on scroll
-- **Service Worker** — Offline caching for static assets and runtime resources
-- **Responsive Design** — Fully responsive layout with mobile-optimised navigation
-- **Interest Prompt** — Non-intrusive "get in touch" call-to-action after 3 minutes of browsing
+- **AI Tutor:** Analogix has an AI Tutor that is backed by Groq. The AI Tutor explains concepts to you generates quizzes and flashcards from the material you are studying.
 
-## Tech Stack
+- **Flashcards:** Analogix has flashcards with SM-2 spaced repetition. You can create your flashcards or let the AI build a set from an uploaded file or chat session.
 
-| Layer | Technology |
-|---|---|
-| **Build** | Vite 7 |
-| **Frontend** | React 18, TypeScript 5 |
-| **Routing** | React Router DOM v6 |
-| **Styling** | Tailwind CSS 3, PostCSS |
-| **UI Library** | shadcn/ui (Radix UI primitives) |
-| **Animations** | Framer Motion 12 |
-| **Charts** | Recharts |
-| **Carousel** | Embla Carousel |
-| **Forms** | react-hook-form + zod |
-| **Icons** | Lucide React |
-| **Theming** | next-themes |
-| **Data Fetching** | TanStack React Query 5 |
-| **AI Backend** | Groq API (LLM) |
-| **Email** | Formspree |
-| **Analytics** | @vercel/analytics |
-| **Testing** | Vitest + Testing Library |
-| **Linting** | ESLint 9 + typescript-eslint |
-| **Offline** | Custom Service Worker |
+- **Quizzes:** Analogix has quizzes with choice, essay or mixed questions. The quizzes can be. Untimed. The AI generates the quizzes from the content you are studying.
 
-## Sections
+- **Calendar:** Analogix has a calendar with day, week or month view. The calendar auto-calculates term dates for every state and imports ICS from school portals.
 
-- **Hero** — Name, tagline, links, 3D tilt portrait, scroll indicator
-- **About** — Bio with highlight cards
-- **Projects** — Project cards with cover images, tags, and links
-- **Resume** — Experience, education, skills (categorised), certifications, extracurriculars
-- **Skills** — Animated proficiency bars (out of 10)
-- **Contact** — Contact form + footer
+- **Timer:** Analogix has a Pomodoro timer with session and streak tracking.
 
-## Getting Started
+- **Study Schedule:** Analogix generates a study plan from your subjects and deadlines. You can edit the study plan if you need to.
 
-```sh
-# Clone the repository
-git clone https://github.com/Error403Allowed/portfolio.git
-cd portfolio
+- **Subjects:** Analogix helps you track your marks, homework and syllabus. It also has a built-in document editor.
 
-# Install dependencies
-npm install
+- **Rooms:** Analogix has real-time group work with chat, documents and a synced timer.
 
-# Copy environment variables and fill in your keys
-cp .env.example .env
-```
+- **Formulas:** Analogix has subject-based formula sheets rendered in LaTeX. You can search for formulas if you need to.
 
-Required environment variables:
+- **Achievements:** Analogix has XP. Badges to make studying more fun.
 
-| Variable | Description |
-|---|---|
-| `GROQ_API_KEY_1` | Groq API key (get one at [console.groq.com](https://console.groq.com)) |
-| `GROQ_API_KEY_2` | Optional second key for round-robin load balancing |
-| `FORMSPREE_ENDPOINT` | Formspree form endpoint (e.g. `https://formspree.io/f/yourFormId`) |
-| `GROQ_MODEL` | Groq model ID (defaults to `meta-llama/llama-4-scout-17b-16e-instruct`) |
-| `CHAT_ALLOWED_ORIGIN` | CORS origin for local dev (defaults to `http://localhost:8080`) |
-
-```sh
-# Start the dev server (API proxy runs via Vite middleware — no separate process needed)
-npm run dev
-```
-
-Open [http://localhost:8080](http://localhost:8080) in your browser.
-
-## Scripts
-
-| Command | Description |
-|---|---|
-| `npm run dev` | Start Vite dev server with API middleware |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run test` | Run Vitest test suite |
-| `npm run lint` | Run ESLint |
-| `npm run chat:proxy` | Standalone Groq proxy server |
-
-## Project Structure
-
-```
-src/
-├── App.tsx                  # Root component with router
-├── main.tsx                 # Entry point + service worker registration
-├── index.css                # Global styles, CSS variables, utilities
-├── components/
-│   ├── sections/            # Hero, About, Projects, Resume, Skills, Contact
-│   ├── ui/                  # shadcn/ui primitives (~40 components)
-│   ├── ParticleBackground.tsx
-│   ├── Navbar.tsx
-│   ├── SplashScreen.tsx
-│   ├── ColorPicker.tsx
-│   ├── CursorGlow.tsx
-│   ├── PortfolioAssistantWidget.tsx
-│   └── ...
-├── pages/
-│   ├── Index.tsx            # Main portfolio page
-│   └── NotFound.tsx         # 404 page
-├── hooks/                   # use-mobile, use-toast
-├── lib/                     # Utility functions (cn)
-└── test/                    # Vitest setup and tests
-
-data/
-└── portfolio.json           # Structured content (source of truth for AI context)
-
-server/
-├── groqHandler.mjs          # Groq API handler with key rotation
-├── emailHandler.mjs         # Formspree email proxy
-├── portfolioContext.mjs     # Builds AI system prompt from portfolio.json
-└── groqProxy.mjs            # Standalone proxy server
-
-api/                         # Vercel serverless functions
-├── chat.js
-└── email.js
-
-public/
-└── sw.js                    # Service Worker (offline caching)
-```
-
-## Deployment
-
-The project is ready to deploy on **Vercel**. Serverless functions in the `api/` directory handle the chat and email endpoints automatically.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-Make sure to set the same environment variables in your Vercel project settings.
+- **Assessment Guide:** You can hand the AI an assessment PDF. It drafts a study plan for you.
 
 ---
 
-Built by **Shrravan Bala** · [GitHub](https://github.com/Error403Allowed) · [Email](mailto:shrravan.bala@gmail.com)
+## Architecture
 
-&copy; 2026 — Designed and built from scratch with React, Tailwind CSS, and shadcn/ui.
+```
+
+┌───────────────────────┐
+
+│ AnalogixWeb │
+
+│ Next.js 16. Turbopack │
+
+│ REST + GraphQL client │
+
+└────────┬──────────────┘
+
+│ HTTP/WS
+
+┌────────▼──────────────┐
+
+│ AnalogixGraphQL │
+
+│ Apollo Server v5 │◄──── Supabase Auth (JWT)
+
+│ Express 5 + graphql-ws│ Groq AI, OpenAlex
+
+│ Redis PubSub │ Supabase DB/Storage
+
+└───────┬──────────────┘
+
+│ HTTP/WS
+
+┌────────▼──────────────┐
+
+│ AnalogixMobile │
+
+│ Expo SDK 54 + RN 0.81 │
+
+│ Material 3 Expressive │
+
+└───────────────────────┘
+
+```
+
+Analogix made some key design decisions.
+
+Analogix decided that the web and mobile Analogix will share the GraphQL API.
+
+This means that there will be no endpoints.
+
+Analogix also decided that auth will be handled server-side via Supabase JWT verification.
+
+Analogix decided to use Redis PubSub to manage subscriptions for room sync and chat streaming.
+
+This falls back to in-process in dev.
+
+Both clients share types and schemas from `@analogix/shared`.
+
+If you change a Zod schema the rest follows.
+
+---
+
+## The apps
+
+| Package Description | Tech stack |
+
+|---------|-------------|------------|
+
+| `AnalogixWeb` | Web client | Next.js 16 Turbopack, TypeScript |
+
+| `AnalogixMobile` Mobile app | React Native 0.81 (Expo SDK 54) react-native-paper Reanimated 4 |
+
+| `AnalogixGraphQL` | BFF / GraphQL gateway | Apollo Server v5, Express 5 graphql-ws, Redis |
+
+@analogix/shared` | Common types and schemas | TypeScript, Zod, JSON manifests |
+
+| `@analogix/mcp` | Model Context Protocol server | TypeScript exposes app data via MCP |
+
+---
+
+## Getting started
+
+```bash
+
+# 1. Install. Workspace dependencies
+
+npm install
+
+# 2. Copy environment templates. Add your secrets
+
+cp AnalogixGraphQL/.env.example AnalogixGraphQL/.env
+
+cp AnalogixMobile/.env.example AnalogixMobile/.env
+
+# 3. Build the shared package first (required by all workspaces)
+
+npm run build:shared
+
+# 4. Start the API (terminal 1)
+
+npm run dev:api # http://localhost:4000/graphql
+
+# 5. Start the web client (terminal 2)
+
+npm run dev:web # http://localhost:3000
+
+# 6. Start the app (terminal 3)
+
+npm run dev:mobile # Expo dev server
+
+```
+
+---
+
+## Environment variables
+
+**AnalogixGraphQL/.env** (Server runtime)
+
+`PORT` `NODE_ENV` `CORS_ORIGINS` `SUPABASE_URL` `SUPABASE_ANON_KEY` `SUPABASE_SERVICE_ROLE_KEY` `GROQ_API_KEY` `GROQ_API_KEY_2` `GOOGLE_CLIENT_ID` `GOOGLE_CLIENT_SECRET` `DESMOS_API_KEY` `REDIS_URL` `LOG_LEVEL`
+
+**AnalogixMobile/.env** (Client side)
+
+`EXPO_PUBLIC_SUPABASE_URL` `EXPO_PUBLIC_SUPABASE_ANON_KEY` `EXPO_PUBLIC_GRAPHQL_HTTP_URL` `EXPO_PUBLIC_GRAPHQL_WS_URL` `EXPO_PUBLIC_GOOGLE_*_CLIENT_ID` `EXPO_PUBLIC_GOOGLE_REDIRECT_SCHEME`
+
+**AnalogixWeb/.env.local** (Next.js)
+
+`GROQ_API_KEY` `GROQ_API_KEY_2` `NEXT_PUBLIC_SUPABASE_URL` `NEXT_PUBLIC_SUPABASE_ANON_KEY` `SUPABASE_SERVICE_ROLE_KEY` `GOOGLE_CLIENT_ID` `GOOGLE_CLIENT_SECRET` `NEXT_PUBLIC_SITE_URL` `DESMOS_API_KEY` `ALLOW_DEV_API`
+
+---
+
+## Root-level scripts
+
+Command | Function |
+
+|---------|----------|
+
+| `npm run dev` | Starts all workspaces in dev mode |
+
+| `npm run dev:api` | GraphQL BFF on `:4000` |
+
+| `npm run dev:web` | Next.js dev server on `:3000` |
+
+| `npm run dev:mobile` | Expo dev client on `:8081` |
+
+| `npm run dev:shared` | Watches `@analogix/shared` for changes |
+
+| `npm run build` | Builds all workspaces in dependency order |
+
+| `npm run build:shared` | Builds shared package first
+
+| `npm run typecheck` | `tsc --noEmit` across all workspaces |
+
+| `npm run lint` | Run ESLint |
+
+| `npm run clean` | Clears `dist/` `.next/` etc. |
+
+---
+
+## Further reading
+
+You can refer to the READMEs in each package for more details:
+
+- [`AnalogixGraphQL/README.md`](./AnalogixGraphQL/README.md). Schema, resolvers, deployment.
+
+- [`AnalogixMobile/README.md`](./AnalogixMobile/README.md). Screenshots, theming EAS builds, auth.
+
+- [`AnalogixWeb/README.md`](./AnalogixWeb/README.md). Setup, pages, troubleshooting.
+
+---
+
+## License
+
+Analogix is a project. All rights reserved.
+
+---
+
+*Disclaimer: While AI has been of assistance in putting portions of the code it has all been fact and bug-checked to provide the best experience, for users of Analogix.*
