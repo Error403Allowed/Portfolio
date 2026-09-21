@@ -81,5 +81,3 @@ See .env.example for the full list. The AI chatbot requires a Groq API key and t
 ## Deployment
 
 This project is deployed in Vercel. The api/ directory will be run as serverless functions in production. The server/ proxy is only used for local development.
-
-Sources
